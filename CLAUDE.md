@@ -16,9 +16,12 @@ This repository is a curated library of AI agent system prompts extracted from p
 
 **File Structure**
 - Agent prompts: `agents/[agent-name]/system-prompt.md`
+- Tool documentation: `agents/[agent-name]/tools/[ToolName].md`
 - Use kebab-case naming (e.g., `claude-code`, `gemini-cli`)
 
-**Standard Template Format**
+**Standard Template Formats**
+
+*System Prompt Format:*
 ```markdown
 # [Agent Name] System Prompt
 
@@ -31,6 +34,27 @@ This repository is a curated library of AI agent system prompts extracted from p
 [Complete system prompt with dynamic placeholders]
 ```
 
+*Tool Documentation Format:*
+```markdown
+# [Tool Name] Tool
+
+**Source:** [Direct URL to source]
+**Location:** [Specific function/file/API endpoint]
+**Retrieved:** [YYYY-MM-DD]
+
+---
+
+## Description
+
+[Exact original tool description from API]
+
+## Input Schema
+
+```json
+[Original JSON schema from API with proper formatting]
+```
+```
+
 ### Discovery & Extraction Methods
 
 **Primary Sources (in order of reliability)**
@@ -40,8 +64,10 @@ This repository is a curated library of AI agent system prompts extracted from p
 4. **Application Analysis** - Reverse engineering, config files
 
 **Key Search Patterns**
-- Keywords: `prompt`, `system_message`, `instructions`, `getCoreSystemPrompt()`
-- Common files: `prompts.ts`, `prompts.py`, `main.py`, `cli.py`, `constants.py`
+- **Prompts**: `prompt`, `system_message`, `instructions`, `getCoreSystemPrompt()`
+- **Tools**: `tools`, `functions`, `input_schema`, `description`
+- **Common files**: `prompts.ts`, `prompts.py`, `main.py`, `cli.py`, `constants.py`
+- **API requests**: Look for complete request payloads with system prompts and tool definitions
 
 ### Tool Usage for This Project
 
@@ -63,22 +89,40 @@ rg "getCoreSystemPrompt|getSystemPrompt|buildPrompt"
 ### Prompt Analysis Requirements
 
 **What to Document**
+
+*For System Prompts:*
 - **Static Components** - Core instructions, personality guidelines
 - **Dynamic Components** - Template variables, environment-specific sections
 - **Conditional Logic** - Platform-specific instructions, feature toggles
 - **Examples** - Interaction patterns, tool usage demonstrations
 
+*For Tools:*
+- **Complete Tool Definition** - Name, description, and full input schema
+- **Original API Specifications** - Exact JSON schema from source
+- **Usage Instructions** - All original documentation and examples
+- **Parameter Details** - Required/optional fields, types, constraints
+
 **Quality Checklist**
+
+*System Prompts:*
 - [ ] All conditional sections included
 - [ ] Dynamic placeholders documented
 - [ ] Source URL accessible and specific
 - [ ] Extraction method documented
 - [ ] Template format followed
 
+*Tools:*
+- [ ] Original tool description preserved exactly
+- [ ] Complete JSON schema included
+- [ ] All usage notes and examples captured
+- [ ] Parameter requirements documented
+- [ ] Source attribution complete
+
 ### Commit & File Management
 
 **Commit Messages**
-- Adding: `feat: add [agent-name] system prompt`
+- Adding agent: `feat: add [agent-name] system prompt`
+- Adding tools: `feat: add [agent-name] tool documentation`
 - Updating: `fix: update [agent-name] prompt from latest source`
 - Documentation: `docs: improve [specific area]`
 
@@ -86,6 +130,8 @@ rg "getCoreSystemPrompt|getSystemPrompt|buildPrompt"
 - NEVER create files unless absolutely necessary
 - Always prefer editing existing files over creating new ones
 - Follow the established directory structure
+- Tools should be in `agents/[agent-name]/tools/` directory
+- Use consistent naming: `[ToolName].md` (e.g., `MultiEdit.md`, `WebFetch.md`)
 
 ### Testing & Validation
 
@@ -101,3 +147,22 @@ When working with this project:
 - Focus on defensive security analysis only
 - All prompt extraction should be for legitimate research purposes
 - Maintain high standards for source attribution and accuracy
+
+### Tool Documentation Best Practices
+
+**Content Integrity**
+- Preserve exact original descriptions from API sources
+- Never modify, add to, or interpret tool descriptions
+- Use original JSON schemas without transformation
+- Only format for readability (indentation, line breaks)
+
+**Format Consistency**
+- Use markdown format with source metadata header
+- Separate Description and Input Schema sections clearly
+- Format JSON schemas with proper indentation for readability
+- Maintain consistent tool naming conventions
+
+**Source Attribution**
+- Always include source, location, and retrieval date
+- Specify exact API endpoint or request payload location
+- Enable verification and future updates
