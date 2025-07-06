@@ -1,62 +1,24 @@
-# Agentic System Prompts Library
+# AI Agent System Prompts Library
 
-A comprehensive collection of system prompts and tools used by AI coding agents like Claude Code, Gemini CLI, GitHub Copilot, Codex, and others.
+A curated collection of system prompts from production AI coding agents, extracted and documented for research and educational purposes.
 
-## Project Structure
+## Available Agents
 
-```
-/
-├── agents/                    # System prompts organized by agent
-│   ├── claude-code/
-│   │   └── system-prompt.md
-│   ├── codex/
-│   │   └── system-prompt.md
-│   └── gemini-cli/
-│       └── system-prompt.md
-├── docs/                      # Documentation and guides
-└── scripts/                   # Automation and validation tools
-    ├── validators/
-    └── fetchers/
-```
+### [Gemini CLI](./agents/gemini-cli/)
+Google's command-line AI agent with comprehensive tooling support and web search capabilities.
 
-## Agent Categories
+### [Codex CLI](./agents/codex-cli/)
+OpenAI's command-line code generation agent focused on development workflows.
 
-### Code Generation Agents
-- **Claude Code** - Anthropic's CLI coding assistant
-- **Codex** - OpenAI's code generation model
-- **Gemini CLI** - Google's command-line coding agent
+## Performance Benchmarks
 
-### Analysis Agents
-- Security auditing agents
-- Code review agents
-- Performance analysis agents
-
-### Specialized Agents
-- Documentation generators
-- Test generators
-- Refactoring assistants
-
-## Data Sources
-
-Prompts are collected from various sources:
-- **Official Documentation** - Vendor-published specifications
-- **Community Observation** - Reverse-engineered from interactions
-- **Research Papers** - Academic publications
-- **Tool Analysis** - Direct inspection of agent behavior
-
-## Future Plans
-
-- **Automated Fetching** - Scripts to automatically update prompts from various sources
-- **Version Tracking** - Change detection and update notifications
-- **Comparison Tools** - Side-by-side analysis of different agents
-- **Usage Analytics** - Track which prompts and patterns are most effective
+For detailed performance analysis and comparison data, see [docs/benchmark-data.md](./docs/benchmark-data.md).
 
 ## Contributing
 
-1. Create a new directory under the appropriate agent path
+1. Create a new directory under `agents/[agent-name]/`
 2. Add a `system-prompt.md` file with the complete system prompt
 3. Include source information and retrieval date in the prompt header
-4. Follow the contribution guidelines in `docs/CONTRIBUTING.md`
 
 ## Usage Guidelines
 

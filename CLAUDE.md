@@ -1,168 +1,103 @@
-# Project: AI Agent System Prompts Library
+# AI Agent System Prompts Library - Claude Code Guidelines
 
-## Contribution Philosophy
+## Project Overview
 
-The guiding principles for this project are:
+This repository is a curated library of AI agent system prompts extracted from production systems. The goal is to document complete prompt templates as they would be sent to AI models.
 
-1. **Quality Over Quantity** - Better to have fewer, well-documented prompts than many incomplete ones
-2. **Evidence-Based and Verifiable** - Every prompt must have clear source attribution and be verifiable
-3. **Completeness** - Capture the full system prompt including all dynamic parts, examples, and conditional logic
+## Claude Code Workflow Guidelines
 
-## The Goal: Capturing the Complete System Prompt
+### Core Principles
 
-A system prompt is rarely just a single block of text. Modern AI agents use sophisticated prompt engineering that includes:
+1. **Quality Over Quantity** - Focus on complete, well-documented prompts
+2. **Evidence-Based** - All prompts must have verifiable source attribution
+3. **Completeness** - Capture full system prompts including dynamic parts and conditional logic
 
-- **Static Foundation** - The core, unchanging instructions
-- **Dynamic Placeholders** - Variables for user input, context, or environment data
-- **Conditional Logic** - Sections that appear based on certain conditions (git repos, sandbox mode, etc.)
-- **Examples & Few-Shot Learning** - Hardcoded interaction examples
-- **Tool Definitions** - Function schemas and capabilities
-- **Context Injection** - File contents, project structure, user preferences
-
-Our goal is to reconstruct and document the **complete prompt template** as it would be sent to the AI model.
-
-## Contribution Workflow
-
-### Step 1: Prompt Discovery & Extraction
-
-System prompts can be found through various methods, listed from most to least reliable:
-
-**Public Source Code** (Preferred)
-- Analyze official open-source repositories on GitHub, GitLab, etc.
-- Search for keywords: `prompt`, `system_message`, `instructions`, `getCoreSystemPrompt()`, `SYSTEM_PROMPT`
-- Look in common files: `prompts.ts`, `prompts.py`, `main.py`, `cli.py`, `constants.py`
-
-**Official Documentation**
-- API documentation, technical blog posts, research papers
-- Company engineering blogs often detail prompt engineering approaches
-
-**Network Traffic Analysis**
-- Inspect API requests from official applications (for research purposes)
-- Look for instruction fields in request payloads
-- Useful for closed-source tools with web interfaces
-
-**Application Analysis**
-- Mobile/desktop app reverse engineering
-- Browser extension inspection
-- Configuration file analysis
-
-### Step 2: Prompt Analysis & Reconstruction
-
-When analyzing discovered prompts, identify and document:
-
-**Static Components**
-- Core instructions that never change
-- Agent personality and behavior guidelines
-- Task-specific instructions
-
-**Dynamic Components**
-- Template variables (e.g., `${username}`, `{working_directory}`)
-- Environment-specific sections (sandbox detection, git repository status)
-- User preference injections
-
-**Conditional Logic**
-- Platform-specific instructions (macOS vs Linux vs Windows)
-- Feature flags or capability toggles
-- Context-dependent sections
-
-**Examples and Patterns**
-- Interaction examples showing expected input/output patterns
-- Tool usage demonstrations
-- Error handling examples
-
-### Step 3: Formatting & Submission
+### Working with This Project
 
 **File Structure**
-- Create: `agents/[agent-name]/system-prompt.md`
-- Use lowercase, kebab-case naming (e.g., `claude-code`, `gemini-cli`)
+- Agent prompts: `agents/[agent-name]/system-prompt.md`
+- Use kebab-case naming (e.g., `claude-code`, `gemini-cli`)
 
-**Content Template**
+**Standard Template Format**
 ```markdown
 # [Agent Name] System Prompt
 
 **Source:** [Direct URL to source]
-**Location:** [Specific function, file, or API endpoint]
+**Location:** [Specific function/file/API endpoint]
 **Retrieved:** [YYYY-MM-DD]
 
 ---
 
-[Complete system prompt text with dynamic placeholders in their actual positions]
+[Complete system prompt with dynamic placeholders]
 ```
 
-**Source Attribution Requirements**
-- Include direct, accessible URLs
-- Specify exact location (function name, line numbers if applicable)
-- Note any dynamic substitution patterns
-- Document extraction method used
+### Discovery & Extraction Methods
 
-## File Structure Convention
+**Primary Sources (in order of reliability)**
+1. **Public Source Code** - GitHub/GitLab repositories
+2. **Official Documentation** - API docs, technical blogs
+3. **Network Analysis** - API request inspection (research only)
+4. **Application Analysis** - Reverse engineering, config files
 
-```
-agents/
-├── agent-name/
-│   └── system-prompt.md
-├── another-agent/
-│   └── system-prompt.md
-└── ...
-```
+**Key Search Patterns**
+- Keywords: `prompt`, `system_message`, `instructions`, `getCoreSystemPrompt()`
+- Common files: `prompts.ts`, `prompts.py`, `main.py`, `cli.py`, `constants.py`
 
-## Quality Standards
+### Tool Usage for This Project
 
-**Completeness Verification**
-- [ ] All conditional sections included
-- [ ] Dynamic placeholders documented in context
-- [ ] Examples and interaction patterns captured
-- [ ] Tool definitions included (if applicable)
+**Essential Tools**
+- `WebFetch` - Retrieve files from URLs
+- `Grep/Glob` - Search for prompt patterns
+- `Bash` with `curl` - Direct file retrieval
+- `Task` - Complex multi-step searches
 
-**Source Verification**
-- [ ] Source URL is accessible
-- [ ] Location information is specific and accurate
-- [ ] Extraction method is documented
-- [ ] Retrieved date is current
-
-**Documentation Standards**
-- [ ] Follows the standard template format
-- [ ] Uses clear, descriptive agent names
-- [ ] Includes all required metadata
-- [ ] Preserves original formatting and structure
-
-## Case Studies
-
-For practical examples of these principles in action:
-
-- **[Gemini CLI Analysis](./agents/gemini-cli/system-prompt.md)** - GitHub source code extraction
-- **[Codex CLI Analysis](./agents/codex-cli/system-prompt.md)** - Combined GitHub + network traffic approach
-
-## Tools & Commands
-
-**Essential Tools for Discovery**
-- `WebFetch` - Access raw files from URLs
-- `Grep/Glob` - Search codebases for prompt patterns  
-- `curl` - Direct file retrieval from repositories
-- `rg` (ripgrep) - Fast searching with gitignore respect
-
-**Common Search Patterns**
+**Common Commands**
 ```bash
 # GitHub raw file access
 curl -s "https://raw.githubusercontent.com/[owner]/[repo]/[branch]/path/to/file"
 
 # Search for prompt functions
-grep -rn "prompt\|PROMPT\|system\|instructions" .
 rg "getCoreSystemPrompt|getSystemPrompt|buildPrompt"
 ```
 
-## Commit Conventions
+### Prompt Analysis Requirements
 
-- **Adding new agent:** `feat: add [agent-name] system prompt`
-- **Updating existing:** `fix: update [agent-name] prompt from latest source`  
-- **Documentation:** `docs: improve [specific area]`
+**What to Document**
+- **Static Components** - Core instructions, personality guidelines
+- **Dynamic Components** - Template variables, environment-specific sections
+- **Conditional Logic** - Platform-specific instructions, feature toggles
+- **Examples** - Interaction patterns, tool usage demonstrations
 
-## Review Process
+**Quality Checklist**
+- [ ] All conditional sections included
+- [ ] Dynamic placeholders documented
+- [ ] Source URL accessible and specific
+- [ ] Extraction method documented
+- [ ] Template format followed
 
-Pull requests will be reviewed for:
-1. **Completeness** - All dynamic parts and examples included
-2. **Attribution** - Clear, accessible source documentation
-3. **Accuracy** - Faithful reproduction of original prompt
-4. **Format** - Adherence to template and naming conventions
+### Commit & File Management
 
-Remember: This library's value comes from providing researchers, developers, and AI practitioners with accurate, complete documentation of how production AI agents actually work.
+**Commit Messages**
+- Adding: `feat: add [agent-name] system prompt`
+- Updating: `fix: update [agent-name] prompt from latest source`
+- Documentation: `docs: improve [specific area]`
+
+**File Management Rules**
+- NEVER create files unless absolutely necessary
+- Always prefer editing existing files over creating new ones
+- Follow the established directory structure
+
+### Testing & Validation
+
+When working with this project:
+1. Verify all URLs are accessible
+2. Check that extracted prompts are complete
+3. Ensure proper formatting and attribution
+4. Validate against the quality checklist
+
+### Important Notes
+
+- This is a research library for understanding AI agent architectures
+- Focus on defensive security analysis only
+- All prompt extraction should be for legitimate research purposes
+- Maintain high standards for source attribution and accuracy
