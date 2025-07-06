@@ -1,7 +1,7 @@
 # Codex CLI System Prompt
 
-**Source:** https://raw.githubusercontent.com/openai/codex/abcca30d93d89197405ec56782e146f7a776297d/codex-cli/src/utils/agent/agent-loop.ts  
-**Location:** `prefix` constant around line 1003  
+**Source:** https://raw.githubusercontent.com/openai/codex/main/codex-cli/src/utils/agent/agent-loop.ts
+**Location:** `prefix` constant around line 1003
 **Retrieved:** 2024-07-03
 
 ---
