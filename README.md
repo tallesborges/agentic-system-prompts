@@ -8,36 +8,11 @@ A curated collection of system prompts and tool definitions from production AI c
 
 ## Table of Contents
 
-- [Available Agents](#available-agents)
 - [Agent Comparison](#agent-comparison)
 - [What's Included](#whats-included)
 - [Research Value](#research-value)
 - [Contributing](#contributing)
-- [Usage Guidelines](#usage-guidelines)
 - [License](#license)
-
-## Available Agents
-
-### [Aider](./agents/aider/) 
-Command-line AI coding assistant with multiple editing modes (patch, diff, whole file) and git integration.
-
-### [Claude Code](./agents/claude-code/)
-Anthropic's official CLI with comprehensive toolset including file operations, web search, and task management.
-
-### [Cline](./agents/cline/)
-Highly skilled software engineer AI with MCP (Model Context Protocol) support and extensive development tools.
-
-### [Codex CLI](./agents/codex-cli/)
-OpenAI's terminal-based coding assistant for natural language interaction with local codebases.
-
-### [Gemini CLI](./agents/gemini-cli/)
-Google's interactive CLI agent with comprehensive tooling support, memory management, and web capabilities.
-
-### [Roo Code](./agents/roo-code/)
-AI coding assistant with dynamic system prompts and comprehensive development workflow support.
-
-### [Zed](./agents/zed/)
-Editor-integrated AI assistant with deep integration into the Zed development environment.
 
 ## Agent Comparison
 
@@ -74,15 +49,6 @@ This collection provides insights into:
 3. Document tools in `agents/[agent-name]/tools/` directory
 4. Include source information and retrieval date in headers
 5. Follow the established template formats (see [CLAUDE.md](./CLAUDE.md))
-
-## Usage Guidelines
-
-- Always verify prompt authenticity and source
-- Test prompts in isolated environments first
-- Respect vendor terms of service and usage policies
-- Document any modifications or adaptations made
-- Maintain ethical standards for AI agent usage
-- Use for defensive security analysis and educational purposes only
 
 ## License
 
