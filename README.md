@@ -1,6 +1,20 @@
 # AI Agent System Prompts Library
 
+[![GitHub stars](https://img.shields.io/github/stars/tallesborges/agentic-system-prompts?style=flat-square)](https://github.com/tallesborges/agentic-system-prompts/stargazers)
+[![GitHub license](https://img.shields.io/github/license/tallesborges/agentic-system-prompts?style=flat-square)](https://github.com/tallesborges/agentic-system-prompts/blob/main/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/tallesborges/agentic-system-prompts?style=flat-square)](https://github.com/tallesborges/agentic-system-prompts/commits/main)
+
 A curated collection of system prompts and tool definitions from production AI coding agents, extracted and documented for research and educational purposes.
+
+## Table of Contents
+
+- [Available Agents](#available-agents)
+- [What's Included](#whats-included)
+- [Research Value](#research-value)
+- [Quick Start](#quick-start)
+- [Contributing](#contributing)
+- [Usage Guidelines](#usage-guidelines)
+- [License](#license)
 
 ## Available Agents
 
@@ -25,6 +39,18 @@ AI coding assistant with dynamic system prompts and comprehensive development wo
 ### [Zed](./agents/zed/)
 Editor-integrated AI assistant with deep integration into the Zed development environment.
 
+## Agent Comparison
+
+| Agent | Provider | Type | Tools | Key Features |
+|-------|----------|------|-------|-------------|
+| [Claude Code](./agents/claude-code/) | Anthropic | CLI | 16 | Task management, web search, comprehensive file ops |
+| [Gemini CLI](./agents/gemini-cli/) | Google | CLI | 11 | Memory management, multi-file reading, web capabilities |
+| [Cline](./agents/cline/) | Open Source | VS Code | 12 | MCP support, browser integration, planning mode |
+| [Aider](./agents/aider/) | Open Source | CLI | Git-based | Multiple edit modes, git integration |
+| [Roo Code](./agents/roo-code/) | RooCode Inc | VS Code | 12 | Dynamic prompts, mode switching, comprehensive workflow |
+| [Zed](./agents/zed/) | Zed Industries | Editor | 15 | Editor integration, diagnostics, thinking tool |
+| [Codex CLI](./agents/codex-cli/) | OpenAI | CLI | Function calls | Natural language codebase interaction |
+
 ## What's Included
 
 Each agent directory contains:
@@ -40,6 +66,27 @@ This collection provides insights into:
 - **Tool Design** - Common patterns in AI agent tooling and capabilities
 - **Safety Measures** - Security considerations and defensive programming practices
 - **User Experience** - How different agents handle interaction and workflow management
+
+## Quick Start
+
+1. **Browse Agents**: Explore the [agents directory](./agents/) to find system prompts
+2. **Study Structure**: Each agent has a `system-prompt.md` with complete instructions
+3. **Examine Tools**: Check `tools/` subdirectories for API specifications
+4. **Compare Approaches**: See how different agents handle similar tasks
+
+### Example: Claude Code vs Gemini CLI
+
+```bash
+# View Claude Code system prompt
+cat agents/claude-code/system-prompt.md
+
+# Compare with Gemini CLI approach
+cat agents/gemini-cli/system-prompt.md
+
+# Examine tool differences
+ls agents/claude-code/tools/
+ls agents/gemini-cli/tools/
+```
 
 ## Contributing
 
