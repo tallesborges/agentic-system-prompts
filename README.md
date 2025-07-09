@@ -25,7 +25,7 @@ A curated collection of system prompts and tool definitions from production AI c
 | [Roo Code](./agents/roo-code/) | RooCode Inc | VS Code | 12 | Dynamic prompts, mode switching, comprehensive workflow |
 | [Zed](./agents/zed/) | Zed Industries | Editor | 15 | Editor integration, diagnostics, thinking tool |
 | [Codex CLI (TypeScript)](./agents/codex-cli/) | OpenAI | CLI | Function calls | Natural language codebase interaction |
-| [Codex CLI (Rust)](./agents/codex-rs/) | OpenAI | CLI | apply_patch | Containerized coding with patch-based editing |
+| [Codex CLI (Rust)](./agents/codex-rs/) | OpenAI | CLI | 1 | Rust CLI with patch-based editing |
 
 ## What's Included
 

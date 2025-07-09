@@ -4,11 +4,16 @@
 
 ## System Prompts
 
-- **[system-prompt.md](system-prompt.md)** - Complete system prompt with containerized environment specifications, coding guidelines, and patch-based editing instructions
+- **[system-prompt.md](system-prompt.md)** - Complete system prompt with coding guidelines and patch-based editing instructions
+
+## Tools
+
+- **local_shell** - Provides access to shell environment with specialized `apply_patch` command
 
 ## Key Features
 
 - **Patch-Based Editing**: Uses specialized `apply_patch` command for safe file modifications
+- **Performance Optimized**: Uses `rg` (ripgrep) instead of slower search tools
 
 ## Patch System
 
