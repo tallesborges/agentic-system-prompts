@@ -51,6 +51,13 @@ This collection provides insights into:
 4. Include source information and retrieval date in headers
 5. Follow the established template formats (see [CLAUDE.md](./CLAUDE.md))
 
+## Roadmap
+
+Planned additions to this repository:
+
+- [ ] **Tools Comparison** - Detailed analysis and comparison of tools across different agents
+- [ ] **Prompts Analysis** - In-depth analysis of prompt engineering patterns and techniques
+
 ## License
 
 This collection is provided for research and educational purposes. Original prompts and tools remain property of their respective creators. See individual agent directories for specific source attributions.
