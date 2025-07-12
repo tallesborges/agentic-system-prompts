@@ -1,25 +1,39 @@
-# Codex CLI (Rust) System Prompt
+# Codex Cli
 
-[Codex CLI](https://github.com/openai/codex) is OpenAI's Rust-implemented command-line coding assistant that uses a specialized patch-based system for code modification and execution.
+**Description**: Rust-implemented command-line coding assistant with patch-based file editing
+**Provider**: OpenAI
+**Repository**: https://github.com/openai/codex
+**Type**: CLI Tool
 
-## System Prompts
+## Overview
 
-- **[system-prompt.md](system-prompt.md)** - Complete system prompt with coding guidelines and patch-based editing instructions
+// TODO
+
+## System Prompt
+
+- **Format**: Jinja2 template (`.j2`) with dynamic variables
+- **Size**: ~1,500 tokens
+- **Variables**: `current_file`, `file_contents`, `user_request`
+- **Source**: https://raw.githubusercontent.com/openai/codex/8d35ad0ef79a0df564d2edc3b5e5624c53c7bde7/codex-rs/core/prompt.md
 
 ## Tools
 
-- **local_shell** - Provides access to shell environment with specialized `apply_patch` command
+| Tool | Description | Parameters | Used For |
+|------|-------------|------------|----------|
+| local_shell | Shell execution (implementation details in prompt) | None (empty enum variant) | Codex models |
+| shell | Runs a shell command, and returns its output | command (array of strings), workdir (string), timeout (number) | Other models |
 
-## Key Features
+## Source Information
 
-- **Patch-Based Editing**: Uses specialized `apply_patch` command for safe file modifications
-- **Performance Optimized**: Uses `rg` (ripgrep) instead of slower search tools
+- **Repository**: https://github.com/openai/codex
+- **Version**: Not specified in source
+- **Commit**: 8d35ad0ef79a0df564d2edc3b5e5624c53c7bde7
+- **Extracted**: 2025-01-12
+- **Last Updated**: 2025-01-12
 
-## Patch System
+## Files Structure
 
-The agent uses a specialized patch language with three main operations:
-- `Add File`: Create new files
-- `Update File`: Modify existing files (with optional renaming)
-- `Delete File`: Remove files
-
-The patch format is designed to be safe, parseable, and easy to apply programmatically.
+- `system-prompt.j2` - Jinja2 template with variables and comprehensive attribution
+- `tools/` - Individual tool definitions in YAML format with source links
+  - `local_shell.yml` - Shell execution for codex models (empty enum variant)
+  - `shell.yml` - Shell command execution tool for other models

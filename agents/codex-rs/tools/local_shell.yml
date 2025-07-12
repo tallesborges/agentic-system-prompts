@@ -1,0 +1,5 @@
+# Source: https://raw.githubusercontent.com/openai/codex/bfeb8c92a591e8f20ecabb2a1b5a22e1574e7951/codex-rs/core/src/openai_tools.rs#L9
+# Extracted: 2025-07-11
+# Note: Used in DEFAULT_CODEX_MODEL_TOOLS for codex models. Defined as empty enum variant LocalShell {}
+
+type: local_shell

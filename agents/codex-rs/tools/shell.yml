@@ -1,0 +1,21 @@
+# Source: https://raw.githubusercontent.com/openai/codex/bfeb8c92a591e8f20ecabb2a1b5a22e1574e7951/codex-rs/core/src/openai_tools.rs
+# Extracted: 2025-07-11
+# Note: Found in DEFAULT_TOOLS LazyLock definition
+
+name: shell
+description: Runs a shell command, and returns its output.
+strict: false
+parameters:
+  type: object
+  properties:
+    command:
+      type: array
+      items:
+        type: string
+    workdir:
+      type: string
+    timeout:
+      type: number
+  required:
+    - command
+  additionalProperties: false
