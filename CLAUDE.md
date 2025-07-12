@@ -183,13 +183,6 @@ Each agent directory must include a README.md with this structure:
 | [tool_name] | [Brief description] | [Key parameters] |
 | ... | ... | ... |
 
-## Source Information
-
-- **Repository**: [GitHub URL]
-- **Version**: [Version number]
-- **Extracted**: [Date]
-- **Last Updated**: [Date]
-
 ## Files Structure
 
 - `system-prompt.j2` - Jinja2 template with variables and comprehensive attribution
