@@ -4,7 +4,7 @@
 [![GitHub license](https://img.shields.io/github/license/tallesborges/agentic-system-prompts?style=flat-square)](https://github.com/tallesborges/agentic-system-prompts/blob/main/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/tallesborges/agentic-system-prompts?style=flat-square)](https://github.com/tallesborges/agentic-system-prompts/commits/main)
 
-A curated collection of system prompts and tool definitions from production AI coding agents, extracted and documented for research and educational purposes.
+What are the differences between agentic coding tools? TBH, most of the differences are the system prompts and the tools they provide, as well as how they handle them. In this repo, I would like to document these system prompts and the tools provided by these agentic coding tools.
 
 ## Table of Contents
 
@@ -16,15 +16,15 @@ A curated collection of system prompts and tool definitions from production AI c
 
 ## Agent Comparison
 
-| Agent | Provider | Type | Tools | Key Features |
-|-------|----------|------|-------|-------------|
-| [Claude Code](./agents/claude-code/) | Anthropic | CLI | 16 | Task management, web search, comprehensive file ops |
-| [Gemini CLI](./agents/gemini-cli/) | Google | CLI | 11 | Memory management, multi-file reading, web capabilities |
-| [Cline](./agents/cline/) | Open Source | VS Code | 12 | MCP support, browser integration, planning mode |
-| [Aider](./agents/aider/) | Open Source | CLI | Git-based | Multiple edit modes, git integration |
-| [Roo Code](./agents/roo-code/) | RooCode Inc | VS Code | 12 | Dynamic prompts, mode switching, comprehensive workflow |
-| [Zed](./agents/zed/) | Zed Industries | Editor | 15 | Editor integration, diagnostics, thinking tool |
-| [Codex CLI (Rust)](./agents/codex-rs/) | OpenAI | CLI | 1 | Rust CLI with patch-based editing |
+| Agent | Provider | Type | Tools |
+|-------|----------|------|-------|
+| [Claude Code](./agents/claude-code/) | Anthropic | CLI | 16 |
+| [Gemini CLI](./agents/gemini-cli/) | Google | CLI | 11 |
+| [Cline](./agents/cline/) | Open Source | VS Code | 12 |
+| [Aider](./agents/aider/) | Open Source | CLI | Git-based |
+| [Roo Code](./agents/roo-code/) | RooCode Inc | VS Code | 12 |
+| [Zed](./agents/zed/) | Zed Industries | Editor | 15 |
+| [Codex CLI (Rust)](./agents/codex-rs/) | OpenAI | CLI | 1 |
 
 ## What's Included
 
