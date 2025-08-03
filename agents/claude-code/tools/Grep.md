@@ -1,45 +1,63 @@
-# Grep Tool
-
-**Source:** Anthropic Claude Code API Request
-**Location:** tools array in request payload
-**Retrieved:** 2025-07-06
-
+---
+source: Production Claude Code CLI tool definition
+extracted: 2025-08-03
+name: Grep
+input_schema:
+  type: object
+  properties:
+    pattern:
+      type: string
+      description: The regular expression pattern to search for in file contents
+    path:
+      type: string
+      description: File or directory to search in (rg PATH). Defaults to current working directory.
+    glob:
+      type: string
+      description: Glob pattern to filter files (e.g. "*.js", "*.{ts,tsx}") - maps to rg --glob
+    type:
+      type: string
+      description: File type to search (rg --type). Common types: js, py, rust, go, java, etc. More efficient than include for standard file types.
+    output_mode:
+      type: string
+      description: 'Output mode: "content" shows matching lines (supports -A/-B/-C context, -n line numbers, head_limit), "files_with_matches" shows file paths (supports head_limit), "count" shows match counts (supports head_limit). Defaults to "files_with_matches".'
+      enum:
+        - content
+        - files_with_matches
+        - count
+    -i:
+      type: boolean
+      description: Case insensitive search (rg -i)
+    -n:
+      type: boolean
+      description: Show line numbers in output (rg -n). Requires output_mode "content", ignored otherwise.
+    -A:
+      type: number
+      description: Number of lines to show after each match (rg -A). Requires output_mode "content", ignored otherwise.
+    -B:
+      type: number
+      description: Number of lines to show before each match (rg -B). Requires output_mode "content", ignored otherwise.
+    -C:
+      type: number
+      description: Number of lines to show before and after each match (rg -C). Requires output_mode "content", ignored otherwise.
+    multiline:
+      type: boolean
+      description: Enable multiline mode where . matches newlines and patterns can span lines (rg -U --multiline-dotall). Default false.
+    head_limit:
+      type: number
+      description: 'Limit output to first N lines/entries, equivalent to "| head -N". Works across all output modes: content (limits output lines), files_with_matches (limits file paths), count (limits count entries). When unspecified, shows all results from ripgrep.'
+  required:
+    - pattern
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#
 ---
 
-## Description
+A powerful search tool built on ripgrep
 
-- Fast content search tool that works with any codebase size
-- Searches file contents using regular expressions
-- Supports full regex syntax (eg. "log.*Error", "function\\s+\\w+", etc.)
-- Filter files by pattern with the include parameter (eg. "*.js", "*.{ts,tsx}")
-- Returns file paths with at least one match sorted by modification time
-- Use this tool when you need to find files containing specific patterns
-- If you need to identify/count the number of matches within files, use the Bash tool with `rg` (ripgrep) directly. Do NOT use `grep`.
-- When you are doing an open ended search that may require multiple rounds of globbing and grepping, use the Agent tool instead
-
-## Input Schema
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "pattern": {
-      "type": "string",
-      "description": "The regular expression pattern to search for in file contents"
-    },
-    "path": {
-      "type": "string",
-      "description": "The directory to search in. Defaults to the current working directory."
-    },
-    "include": {
-      "type": "string",
-      "description": "File pattern to include in the search (e.g. \"*.js\", \"*.{ts,tsx}\")"
-    }
-  },
-  "required": [
-    "pattern"
-  ],
-  "additionalProperties": false,
-  "$schema": "http://json-schema.org/draft-07/schema#"
-}
-```
+  Usage:
+  - ALWAYS use Grep for search tasks. NEVER invoke `grep` or `rg` as a Bash command. The Grep tool has been optimized for correct permissions and access.
+  - Supports full regex syntax (e.g., "log.*Error", "function\\s+\\w+")
+  - Filter files with glob parameter (e.g., "*.js", "**/*.tsx") or type parameter (e.g., "js", "py", "rust")
+  - Output modes: "content" shows matching lines, "files_with_matches" shows only file paths (default), "count" shows match counts
+  - Use Task tool for open-ended searches requiring multiple rounds
+  - Pattern syntax: Uses ripgrep (not grep) - literal braces need escaping (use `interface\\{\\}` to find `interface{}` in Go code)
+  - Multiline matching: By default patterns match within single lines only. For cross-line patterns like `struct \\{[\\s\\S]*?field`, use `multiline: true`

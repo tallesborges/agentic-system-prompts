@@ -4,7 +4,7 @@
 [![GitHub license](https://img.shields.io/github/license/tallesborges/agentic-system-prompts?style=flat-square)](https://github.com/tallesborges/agentic-system-prompts/blob/main/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/tallesborges/agentic-system-prompts?style=flat-square)](https://github.com/tallesborges/agentic-system-prompts/commits/main)
 
-What are the differences between agentic coding tools? TBH, most of the differences are the system prompts and the tools they provide, as well as how they handle them. In this repo, I would like to document these system prompts and the tools provided by these agentic coding tools.
+What makes agentic coding applications different? TBH, it's mostly their system prompts, the tools they provide, and how they actually use them. In this repo, I'm documenting these system prompts and tools from different agentic coding solutions.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ What are the differences between agentic coding tools? TBH, most of the differen
 
 | Agent | Provider | Type | Tools |
 |-------|----------|------|-------|
-| [Claude Code](./agents/claude-code/) | Anthropic | CLI | 16 |
+| [Claude Code](./agents/claude-code/) | Anthropic | CLI | 15 |
 | [Gemini CLI](./agents/gemini-cli/) | Google | CLI | 11 |
 | [Cline](./agents/cline/) | Open Source | VS Code | 12 |
 | [Aider](./agents/aider/) | Open Source | CLI | Git-based |

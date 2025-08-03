@@ -1,12 +1,40 @@
-# MultiEdit Tool
-
-**Source:** Anthropic Claude Code API Request
-**Location:** tools array in request payload
-**Retrieved:** 2025-07-06
-
 ---
-
-## Description
+source: Production Claude Code CLI tool definition
+extracted: 2025-08-03
+name: MultiEdit
+input_schema:
+  type: object
+  properties:
+    file_path:
+      type: string
+      description: The absolute path to the file to modify
+    edits:
+      type: array
+      items:
+        type: object
+        properties:
+          old_string:
+            type: string
+            description: The text to replace
+          new_string:
+            type: string
+            description: The text to replace it with
+          replace_all:
+            type: boolean
+            default: false
+            description: Replace all occurences of old_string (default false).
+        required:
+          - old_string
+          - new_string
+        additionalProperties: false
+      minItems: 1
+      description: Array of edit operations to perform sequentially on the file
+  required:
+    - file_path
+    - edits
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#
+---
 
 This is a tool for making multiple edits to a single file in one operation. It is built on top of the Edit tool and allows you to perform multiple find-and-replace operations efficiently. Prefer this tool over the Edit tool when you need to make multiple edits to the same file.
 
@@ -50,51 +78,3 @@ If you want to create a new file, use:
 - A new file path, including dir name if needed
 - First edit: empty old_string and the new file's contents as new_string
 - Subsequent edits: normal edit operations on the created content
-
-## Input Schema
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "file_path": {
-      "type": "string",
-      "description": "The absolute path to the file to modify"
-    },
-    "edits": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "old_string": {
-            "type": "string",
-            "description": "The text to replace"
-          },
-          "new_string": {
-            "type": "string",
-            "description": "The text to replace it with"
-          },
-          "replace_all": {
-            "type": "boolean",
-            "default": false,
-            "description": "Replace all occurences of old_string (default false)."
-          }
-        },
-        "required": [
-          "old_string",
-          "new_string"
-        ],
-        "additionalProperties": false
-      },
-      "minItems": 1,
-      "description": "Array of edit operations to perform sequentially on the file"
-    }
-  },
-  "required": [
-    "file_path",
-    "edits"
-  ],
-  "additionalProperties": false,
-  "$schema": "http://json-schema.org/draft-07/schema#"
-}
-```

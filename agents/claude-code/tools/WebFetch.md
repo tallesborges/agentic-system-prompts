@@ -1,12 +1,22 @@
-# WebFetch Tool
-
-**Source:** Anthropic Claude Code API Request
-**Location:** tools array in request payload
-**Retrieved:** 2025-07-06
-
 ---
-
-## Description
+source: Production Claude Code CLI tool definition
+extracted: 2025-08-03
+name: WebFetch
+input_schema:
+  type: object
+  properties:
+    url:
+      type: string
+      format: uri
+      description: The URL to fetch content from
+    prompt:
+      type: string
+      description: The prompt to run on the fetched content
+  required:
+    - url
+    - prompt
+  additionalProperties: false
+---
 
 - Fetches content from a specified URL and processes it using an AI model
 - Takes a URL and a prompt as input
@@ -24,28 +34,3 @@ Usage notes:
   - Results may be summarized if the content is very large
   - Includes a self-cleaning 15-minute cache for faster responses when repeatedly accessing the same URL
   - When a URL redirects to a different host, the tool will inform you and provide the redirect URL in a special format. You should then make a new WebFetch request with the redirect URL to fetch the content.
-
-## Input Schema
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "url": {
-      "type": "string",
-      "format": "uri",
-      "description": "The URL to fetch content from"
-    },
-    "prompt": {
-      "type": "string",
-      "description": "The prompt to run on the fetched content"
-    }
-  },
-  "required": [
-    "url",
-    "prompt"
-  ],
-  "additionalProperties": false,
-  "$schema": "http://json-schema.org/draft-07/schema#"
-}
-```

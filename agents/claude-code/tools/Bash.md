@@ -1,12 +1,24 @@
-# Bash Tool
-
-**Source:** Anthropic Claude Code API Request
-**Location:** tools array in request payload
-**Retrieved:** 2025-07-06
-
 ---
-
-## Description
+source: Production Claude Code CLI tool definition
+extracted: 2025-08-03
+name: Bash
+input_schema:
+  type: object
+  properties:
+    command:
+      type: string
+      description: The command to execute
+    description:
+      type: string
+      description: "Clear, concise description of what this command does in 5-10 words. Examples:\nInput: ls\nOutput: Lists files in current directory\n\nInput: git status\nOutput: Shows working tree status\n\nInput: npm install\nOutput: Installs package dependencies\n\nInput: mkdir foo\nOutput: Creates directory 'foo'"
+    timeout:
+      type: number
+      description: Optional timeout in milliseconds (max 600000)
+  required:
+    - command
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#
+---
 
 Executes a given bash command in a persistent shell session with optional timeout, ensuring proper handling and security measures.
 
@@ -112,30 +124,4 @@ Important:
 
 # Other common operations
 - View comments on a Github PR: gh api repos/foo/bar/pulls/123/comments
-
-## Input Schema
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "command": {
-      "type": "string",
-      "description": "The command to execute"
-    },
-    "description": {
-      "type": "string",
-      "description": " Clear, concise description of what this command does in 5-10 words. Examples:\nInput: ls\nOutput: Lists files in current directory\n\nInput: git status\nOutput: Shows working tree status\n\nInput: npm install\nOutput: Installs package dependencies\n\nInput: mkdir foo\nOutput: Creates directory 'foo'"
-    },
-    "timeout": {
-      "type": "number",
-      "description": "Optional timeout in milliseconds (max 600000)"
-    }
-  },
-  "required": [
-    "command"
-  ],
-  "additionalProperties": false,
-  "$schema": "http://json-schema.org/draft-07/schema#"
-}
 ```

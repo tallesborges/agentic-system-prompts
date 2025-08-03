@@ -1,12 +1,22 @@
-# Write Tool
-
-**Source:** Anthropic Claude Code API Request
-**Location:** tools array in request payload
-**Retrieved:** 2025-07-06
-
 ---
-
-## Description
+source: Production Claude Code CLI tool definition
+extracted: 2025-08-03
+name: Write
+input_schema:
+  type: object
+  properties:
+    file_path:
+      type: string
+      description: The absolute path to the file to write (must be absolute, not relative)
+    content:
+      type: string
+      description: The content to write to the file
+  required:
+    - file_path
+    - content
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#
+---
 
 Writes a file to the local filesystem.
 
@@ -16,27 +26,3 @@ Usage:
 - ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required.
 - NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.
 - Only use emojis if the user explicitly requests it. Avoid writing emojis to files unless asked.
-
-## Input Schema
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "file_path": {
-      "type": "string",
-      "description": "The absolute path to the file to write (must be absolute, not relative)"
-    },
-    "content": {
-      "type": "string",
-      "description": "The content to write to the file"
-    }
-  },
-  "required": [
-    "file_path",
-    "content"
-  ],
-  "additionalProperties": false,
-  "$schema": "http://json-schema.org/draft-07/schema#"
-}
-```

@@ -1,12 +1,43 @@
-# TodoWrite Tool
-
-**Source:** Anthropic Claude Code API Request
-**Location:** tools array in request payload
-**Retrieved:** 2025-07-06
-
 ---
-
-## Description
+source: Production Claude Code CLI tool definition
+extracted: 2025-08-03
+name: TodoWrite
+input_schema:
+  type: object
+  properties:
+    todos:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          content:
+            type: string
+            minLength: 1
+          status:
+            type: string
+            enum:
+              - pending
+              - in_progress
+              - completed
+          priority:
+            type: string
+            enum:
+              - high
+              - medium
+              - low
+        required:
+          - content
+          - status
+          - priority
+          - id
+        additionalProperties: false
+      description: The updated todo list
+  required:
+    - todos
+  additionalProperties: false
+---
 
 Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user.
 It also helps the user understand the progress of the task and overall progress of their requests.
@@ -183,57 +214,3 @@ The assistant did not use the todo list because this is a single command executi
    - Use clear, descriptive task names
 
 When in doubt, use this tool. Being proactive with task management demonstrates attentiveness and ensures you complete all requirements successfully.
-
-## Input Schema
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "todos": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string",
-            "minLength": 1
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "pending",
-              "in_progress",
-              "completed"
-            ]
-          },
-          "priority": {
-            "type": "string",
-            "enum": [
-              "high",
-              "medium",
-              "low"
-            ]
-          }
-        },
-        "required": [
-          "content",
-          "status",
-          "priority",
-          "id"
-        ],
-        "additionalProperties": false
-      },
-      "description": "The updated todo list"
-    }
-  },
-  "required": [
-    "todos"
-  ],
-  "additionalProperties": false,
-  "$schema": "http://json-schema.org/draft-07/schema#"
-}
-```
