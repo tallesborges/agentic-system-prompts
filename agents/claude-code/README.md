@@ -11,13 +11,6 @@ Claude Code is Anthropic's official command-line interface for Claude, designed 
 
 The CLI is powered by Claude Opus 4 and features comprehensive tooling for development workflows, including support for Jupyter notebooks, web operations, and advanced task management capabilities.
 
-## System Prompt
-
-- **Format**: Jinja2 template (`.j2`) with dynamic variables
-- **Size**: ~3500 tokens
-- **Variables**: `allowed_tools`, `working_directory`, `is_git_repo`, `platform`, `os_version`, `today_date`, `current_branch`, `main_branch`, `git_status`, `recent_commits`
-- **Source**: Production system prompt from Claude Code CLI
-
 ## Tools
 
 | Tool | Description | Parameters |
